@@ -1,0 +1,55 @@
+version: '3'
+services:
+  # Nginx
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - shop
+      - warehouse
+
+  # Django Shop
+  shop:
+    build:
+      context: ./docker/shop
+    command: /runserver.sh
+    volumes:
+      - ./shop:/app
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+
+  # Django Warehouse
+  warehouse:
+    build:
+      context: ./docker/warehouse
+    command: /runserver.sh
+    volumes:
+      - ./warehouse:/app
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+
+  # PostgreSQL
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: shop_db
+      POSTGRES_USER: shop_user
+      POSTGRES_PASSWORD: shop_password
+
+  # Redis
+  redis:
+    image: redis:6
+
+  # RabbitMQ
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"
