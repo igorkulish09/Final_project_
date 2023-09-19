@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    "admin_app",
+    "cacheops",
 ]
 
 MIDDLEWARE = [
@@ -151,7 +154,7 @@ CELERY_IGNORE_RESULT = True
 # Налаштування для періодичних завдань
 CELERY_BEAT_SCHEDULE = {
     'sync_books': {
-        'task': 'shop_app.tasks.sync_books',  # Шлях до функції завдання
+        'task': 'admin_app.tasks.sync_books',  # Шлях до функції завдання
         'schedule': 60 * 60,  # Кожну годину
     },
 }
