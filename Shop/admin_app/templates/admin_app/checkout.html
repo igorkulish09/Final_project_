@@ -1,0 +1,10 @@
+{% extends 'admin_app/base.html' %}
+
+{% block content %}
+  <h1>Оформлення замовлення</h1>
+  <form method="post" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Оформити замовлення">
+  </form>
+{% endblock %}

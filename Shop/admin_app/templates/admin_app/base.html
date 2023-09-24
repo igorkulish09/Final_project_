@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мій Веб-Сайт{% endblock %}</title>
+    <!-- Додайте ваші посилання на CSS-стилі тут -->
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Мій Веб-Сайт</a></h1>
+        <!-- Додайте навігаційне меню та інші загальні елементи тут -->
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- підвал вашого сайту тут -->
+    </footer>
+
+    <!-- посилання на JavaScript-файли тут -->
+</body>
+</html>

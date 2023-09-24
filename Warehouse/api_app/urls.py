@@ -11,5 +11,6 @@ urlpatterns = [
     path("", include(router.urls)),
     path('api/', APIResponseView.as_view(), name='api_response'),
     path('books/', views.BookList.as_view(), name='book-list'),
+    path('add_book/', views.add_book, name='add_book'),
 ]
 

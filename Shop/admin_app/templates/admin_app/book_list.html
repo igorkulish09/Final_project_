@@ -1,0 +1,16 @@
+{% extends 'admin_app/base.html' %}
+
+{% block content %}
+  <h1>Список книг</h1>
+  <ul>
+    {% for book in books %}
+      <li>
+        {{ book.title }} - {{ book.author }}
+        <form method="post" action="{% url 'add_to_cart' book.id %}">
+          {% csrf_token %}
+          <input type="submit" value="Додати до кошика">
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

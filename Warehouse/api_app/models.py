@@ -11,6 +11,7 @@ class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     description = models.TextField()
+    quantity = models.PositiveIntegerField(default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     inventory_count = models.PositiveIntegerField()
 

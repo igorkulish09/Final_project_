@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій Веб-Сайт</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Мій Веб-Сайт</a></h1>
+    </header>
+
+    <main>
+        <h2>Список книг</h2>
+        <ul>
+            {% for book in books %}
+                <li>{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <!-- підвал вашого сайту тут -->
+    </footer>
+</body>
+</html>
